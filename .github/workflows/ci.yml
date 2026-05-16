@@ -1,0 +1,7 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  validate:
+    uses: Novolis-Platform/novolis-workflows/.github/workflows/registry-pr.yml@main

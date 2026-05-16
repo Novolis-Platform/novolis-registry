@@ -1,0 +1,1 @@
+{"`$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["id","name","type","version","sha256","downloadUrl"],"properties":{"id":{"type":"string"},"name":{"type":"string"},"type":{"type":"string"},"version":{"type":"string"},"sha256":{"type":"string"},"downloadUrl":{"type":"string","format":"uri"}}}
