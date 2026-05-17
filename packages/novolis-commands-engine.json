@@ -2,7 +2,7 @@
   "id": "novolis.commands.engine",
   "name": "Novolis.Commands.Engine",
   "type": "nuget",
-  "version": "0.1.0-preview.1",
+  "version": "1.0.0",
   "repository": "https://github.com/Novolis-Platform/novolis-commands",
   "packageId": "Novolis.Commands.Engine"
 }
