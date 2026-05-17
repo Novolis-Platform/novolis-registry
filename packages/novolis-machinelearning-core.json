@@ -1,0 +1,8 @@
+{
+  "id": "novolis.machinelearning.core",
+  "name": "Novolis.MachineLearning.Core",
+  "type": "nuget",
+  "version": "0.1.0-preview.1",
+  "repository": "https://github.com/Novolis-Platform/novolis-machinelearning",
+  "packageId": "Novolis.MachineLearning.Core"
+}
