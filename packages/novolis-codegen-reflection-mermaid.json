@@ -1,8 +1,0 @@
-{
-  "id": "novolis.codegen.reflection.mermaid",
-  "name": "Novolis.CodeGen.Reflection.Mermaid",
-  "type": "nuget",
-  "version": "0.1.0-preview.1",
-  "repository": "https://github.com/Novolis-Platform/novolis-codegen",
-  "packageId": "Novolis.CodeGen.Reflection.Mermaid"
-}
