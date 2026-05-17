@@ -1,0 +1,8 @@
+{
+  "id": "novolis.commands.queueing",
+  "name": "Novolis.Commands.Queueing",
+  "type": "nuget",
+  "version": "0.1.0-preview.1",
+  "repository": "https://github.com/Novolis-Platform/novolis-commands",
+  "packageId": "Novolis.Commands.Queueing"
+}
