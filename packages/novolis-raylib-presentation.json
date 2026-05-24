@@ -1,8 +1,0 @@
-{
-  "id": "novolis.raylib.presentation",
-  "name": "Novolis.Raylib.Presentation",
-  "type": "nuget",
-  "version": "2026.1.1.0",
-  "repository": "https://github.com/Novolis-Platform/novolis-raylib",
-  "packageId": "Novolis.Raylib.Presentation"
-}

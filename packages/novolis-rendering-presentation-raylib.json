@@ -1,0 +1,6 @@
+{
+  "repo": "novolis-rendering",
+  "name": "Novolis.Rendering.Presentation.Raylib",
+  "description": "Raylib CPU frame presenter for traced RGBA buffers.",
+  "packageId": "Novolis.Rendering.Presentation.Raylib"
+}
