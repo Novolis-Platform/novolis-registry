@@ -1,0 +1,8 @@
+{
+  "id": "novolis.codegen.pipeline",
+  "name": "Novolis.CodeGen.Pipeline",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-codegen",
+  "packageId": "Novolis.CodeGen.Pipeline"
+}
