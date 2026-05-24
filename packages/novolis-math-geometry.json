@@ -2,7 +2,7 @@
   "id": "novolis.math.geometry",
   "name": "Novolis.Math.Geometry",
   "type": "nuget",
-  "version": "2026.1.0",
+  "version": "2026.1.1.0",
   "repository": "https://github.com/Novolis-Platform/novolis-math",
   "packageId": "Novolis.Math.Geometry"
 }

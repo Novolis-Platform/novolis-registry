@@ -2,7 +2,7 @@
   "id": "novolis.physics.motion",
   "name": "Novolis.Physics.Motion",
   "type": "nuget",
-  "version": "2026.1.0",
+  "version": "2026.1.1.0",
   "repository": "https://github.com/Novolis-Platform/novolis-physics",
   "packageId": "Novolis.Physics.Motion"
 }

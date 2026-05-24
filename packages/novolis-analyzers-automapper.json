@@ -2,7 +2,7 @@
   "id": "novolis.analyzers.automapper",
   "name": "Novolis.Analyzers.AutoMapper",
   "type": "nuget",
-  "version": "2026.1.0",
+  "version": "2026.1.1.0",
   "repository": "https://github.com/Novolis-Platform/novolis-analyzers",
   "packageId": "Novolis.Analyzers.AutoMapper"
 }

@@ -2,7 +2,7 @@
   "id": "novolis.transports.http.authentication",
   "name": "Novolis.Transports.Http.Authentication",
   "type": "nuget",
-  "version": "2026.1.0",
+  "version": "2026.1.1.0",
   "repository": "https://github.com/Novolis-Platform/novolis-transports",
   "packageId": "Novolis.Transports.Http.Authentication"
 }

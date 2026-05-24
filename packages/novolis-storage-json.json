@@ -2,7 +2,7 @@
   "id": "novolis.storage.json",
   "name": "Novolis.Storage.Json",
   "type": "nuget",
-  "version": "2026.1.0",
+  "version": "2026.1.1.0",
   "repository": "https://github.com/Novolis-Platform/novolis-storage",
   "packageId": "Novolis.Storage.Json"
 }

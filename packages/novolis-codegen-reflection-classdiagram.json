@@ -2,7 +2,7 @@
   "id": "novolis.codegen.reflection.classdiagram",
   "name": "Novolis.CodeGen.Reflection.ClassDiagram",
   "type": "nuget",
-  "version": "2026.1.0",
+  "version": "2026.1.1.0",
   "repository": "https://github.com/Novolis-Platform/novolis-codegen",
   "packageId": "Novolis.CodeGen.Reflection.ClassDiagram"
 }
