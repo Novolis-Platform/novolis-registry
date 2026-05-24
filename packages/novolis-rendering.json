@@ -1,0 +1,8 @@
+{
+  "id": "novolis.rendering",
+  "name": "Novolis.Rendering",
+  "type": "nuget",
+  "version": "0.1.0-local",
+  "repository": "https://github.com/Novolis-Platform/novolis-rendering",
+  "packageId": "Novolis.Rendering"
+}
