@@ -1,0 +1,8 @@
+{
+  "id": "frank.wirefish",
+  "name": "Frank.WireFish",
+  "type": "nuget",
+  "version": "2026.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-wirefish",
+  "packageId": "Frank.WireFish"
+}

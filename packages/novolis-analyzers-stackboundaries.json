@@ -1,0 +1,8 @@
+{
+  "id": "novolis.analyzers.stackboundaries",
+  "name": "Novolis.Analyzers.StackBoundaries",
+  "type": "nuget",
+  "version": "2026.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-analyzers",
+  "packageId": "Novolis.Analyzers.StackBoundaries"
+}

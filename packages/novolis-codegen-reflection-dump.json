@@ -2,7 +2,7 @@
   "id": "novolis.codegen.reflection.dump",
   "name": "Novolis.CodeGen.Reflection.Dump",
   "type": "nuget",
-  "version": "0.1.0-preview.1",
+  "version": "2026.1.0",
   "repository": "https://github.com/Novolis-Platform/novolis-codegen",
   "packageId": "Novolis.CodeGen.Reflection.Dump"
 }

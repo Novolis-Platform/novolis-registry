@@ -2,7 +2,7 @@
   "id": "novolis.machinelearning.neural",
   "name": "Novolis.MachineLearning.Neural",
   "type": "nuget",
-  "version": "0.1.0-preview.1",
+  "version": "2026.1.0",
   "repository": "https://github.com/Novolis-Platform/novolis-machinelearning",
   "packageId": "Novolis.MachineLearning.Neural"
 }

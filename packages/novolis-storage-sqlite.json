@@ -1,0 +1,8 @@
+{
+  "id": "novolis.storage.sqlite",
+  "name": "Novolis.Storage.Sqlite",
+  "type": "nuget",
+  "version": "2026.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-storage",
+  "packageId": "Novolis.Storage.Sqlite"
+}

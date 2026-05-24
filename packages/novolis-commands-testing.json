@@ -2,7 +2,7 @@
   "id": "novolis.commands.testing",
   "name": "Novolis.Commands.Testing",
   "type": "nuget",
-  "version": "1.0.0",
+  "version": "2026.1.0",
   "repository": "https://github.com/Novolis-Platform/novolis-commands",
   "packageId": "Novolis.Commands.Testing"
 }

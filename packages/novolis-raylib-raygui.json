@@ -1,0 +1,8 @@
+{
+  "id": "novolis.raylib.raygui",
+  "name": "Novolis.Raylib.Raygui",
+  "type": "nuget",
+  "version": "2026.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-raylib",
+  "packageId": "Novolis.Raylib.Raygui"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "novolis.aspire.hosting.signoz",
+  "name": "Novolis.Aspire.Hosting.Signoz",
+  "type": "nuget",
+  "version": "2026.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-aspire",
+  "packageId": "Novolis.Aspire.Hosting.Signoz"
+}
