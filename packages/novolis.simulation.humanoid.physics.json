@@ -1,0 +1,7 @@
+{
+  "id": "novolis.simulation.humanoid.physics",
+  "name": "Novolis.Simulation.Humanoid.Physics",
+  "type": "nuget",
+  "repository": "https://github.com/Novolis-Platform/novolis-simulation",
+  "packageId": "Novolis.Simulation.Humanoid.Physics"
+}

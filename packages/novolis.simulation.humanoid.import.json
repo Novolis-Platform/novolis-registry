@@ -1,0 +1,7 @@
+{
+  "id": "novolis.simulation.humanoid.import",
+  "name": "Novolis.Simulation.Humanoid.Import",
+  "type": "nuget",
+  "repository": "https://github.com/Novolis-Platform/novolis-simulation",
+  "packageId": "Novolis.Simulation.Humanoid.Import"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "novolis.simulation.humanoid.skinning",
+  "name": "Novolis.Simulation.Humanoid.Skinning",
+  "type": "nuget",
+  "repository": "https://github.com/Novolis-Platform/novolis-simulation",
+  "packageId": "Novolis.Simulation.Humanoid.Skinning"
+}

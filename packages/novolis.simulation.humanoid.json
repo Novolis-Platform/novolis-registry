@@ -1,0 +1,7 @@
+{
+  "id": "novolis.simulation.humanoid",
+  "name": "Novolis.Simulation.Humanoid",
+  "type": "nuget",
+  "repository": "https://github.com/Novolis-Platform/novolis-simulation",
+  "packageId": "Novolis.Simulation.Humanoid"
+}
