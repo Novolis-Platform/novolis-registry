@@ -1,0 +1,7 @@
+{
+  "id": "novolis.simulation.tiles",
+  "name": "Novolis.Simulation.Tiles",
+  "type": "nuget",
+  "repository": "https://github.com/Novolis-Platform/novolis-simulation",
+  "packageId": "Novolis.Simulation.Tiles"
+}

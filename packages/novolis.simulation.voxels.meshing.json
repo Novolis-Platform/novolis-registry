@@ -1,0 +1,7 @@
+{
+  "id": "novolis.simulation.voxels.meshing",
+  "name": "Novolis.Simulation.Voxels.Meshing",
+  "type": "nuget",
+  "repository": "https://github.com/Novolis-Platform/novolis-simulation",
+  "packageId": "Novolis.Simulation.Voxels.Meshing"
+}
