@@ -1,0 +1,8 @@
+{
+  "id": "novolis.physics.cloth",
+  "name": "Novolis.Physics.Cloth",
+  "type": "nuget",
+  "version": "2026.1.1.34",
+  "repository": "https://github.com/Novolis-Platform/novolis-physics",
+  "packageId": "Novolis.Physics.Cloth"
+}
