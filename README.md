@@ -1,3 +1,35 @@
+<!-- novolis-marketing:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-brand-transparent.svg" width="360" alt="Novolis"/>
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/banners/novolis-registry.svg" width="100%" alt="novolis-registry"/>
+</p>
+
+<p align="center">
+  <strong>Static package & app catalog</strong><br/>
+  Static registry of Novolis packages and apps.
+</p>
+
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-registry/actions"><img src="https://img.shields.io/github/actions/workflow/status/Novolis-Platform/novolis-registry/merge.yml?branch=main&label=merge&logo=github" alt="merge"/></a>
+  <a href="https://github.com/orgs/Novolis-Platform/packages?repo_name=novolis-registry"><img src="https://img.shields.io/badge/packages-GitHub%20Packages-0a7ea3?logo=nuget" alt="packages"/></a>
+  <a href="https://github.com/Novolis-Platform"><img src="https://img.shields.io/badge/org-Novolis--Platform-111827" alt="org"/></a>
+</p>
+
+<p align="center">
+  <a href="https://nuget.pkg.github.com/Novolis-Platform/index.json"><code>https://nuget.pkg.github.com/Novolis-Platform/index.json</code></a>
+  ·
+  <a href="https://github.com/Novolis-Platform/.github/blob/main/profile/README.md">Org landing</a>
+  ·
+  <a href="https://github.com/Novolis-Platform/novolis-governance">Governance</a>
+</p>
+
+---
+<!-- novolis-marketing:end -->
 # novolis-registry
 
 Static **package registry** for the Novolis ecosystem — one JSON file per published NuGet package. Tooling, org landing pages, and migration runbooks reference these entries to discover package ids, repos, and versions.
@@ -60,3 +92,4 @@ There is no separate apps index in this repo today — application dogfood lives
 ## Policy
 
 Do not add local NuGet folder feeds here. Registry entries point at org feeds only (nuget.org + GitHub Packages).
+
