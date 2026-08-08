@@ -1,0 +1,7 @@
+## .NET
+bin/
+obj/
+
+# MTP / VS test output
+TestResults/
+[Tt]est[Rr]esults/
