@@ -1,0 +1,8 @@
+{
+  "id": "novolis.security.authorization.abstractions",
+  "name": "Novolis.Security.Authorization.Abstractions",
+  "type": "nuget",
+  "version": "2026.1.1.33",
+  "repository": "https://github.com/Novolis-Platform/novolis-security",
+  "packageId": "Novolis.Security.Authorization.Abstractions"
+}
