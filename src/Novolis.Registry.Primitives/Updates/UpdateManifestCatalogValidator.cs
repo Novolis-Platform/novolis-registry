@@ -17,7 +17,7 @@ public static class UpdateManifestCatalogValidator
             errors.Add("schemaVersion must be 1");
         if (catalog.GeneratedAt == default || catalog.GeneratedAt.Offset != TimeSpan.Zero)
             errors.Add("generatedAt must be a UTC timestamp");
-        if (catalog.Updates.Count == 0)
+        if (catalog.Updates is null || catalog.Updates.Count == 0)
         {
             errors.Add("updates must contain at least one manifest");
             return errors;
@@ -28,7 +28,9 @@ public static class UpdateManifestCatalogValidator
         {
             foreach (var error in UpdateManifestValidator.Validate(manifest))
                 errors.Add($"{manifest?.AppId ?? "<missing>"}: {error}");
-            if (manifest is not null && !appIds.Add(manifest.AppId))
+            if (manifest is not null
+                && !string.IsNullOrWhiteSpace(manifest.AppId)
+                && !appIds.Add(manifest.AppId))
                 errors.Add($"duplicate appId '{manifest.AppId}'");
         }
 

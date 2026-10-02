@@ -40,7 +40,7 @@ public static partial class UpdateManifestValidator
             errors.Add("minimumVersion cannot be newer than version");
         }
 
-        if (manifest.Artifacts.Count == 0)
+        if (manifest.Artifacts is null || manifest.Artifacts.Count == 0)
         {
             errors.Add("artifacts must contain at least one item");
         }

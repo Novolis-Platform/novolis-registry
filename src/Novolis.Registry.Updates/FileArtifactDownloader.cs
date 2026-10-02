@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using System.Collections.Concurrent;
 using Novolis.Registry.Primitives.Updates;
 
 namespace Novolis.Registry.Updates;
@@ -9,6 +10,8 @@ namespace Novolis.Registry.Updates;
 /// </summary>
 public sealed class FileArtifactDownloader : IArtifactDownloader
 {
+    private static readonly ConcurrentDictionary<string, SemaphoreSlim> DownloadGates = new(
+        StringComparer.OrdinalIgnoreCase);
     private readonly HttpClient _httpClient;
     private readonly FileArtifactDownloaderOptions _options;
 
@@ -37,6 +40,67 @@ public sealed class FileArtifactDownloader : IArtifactDownloader
         var destination = Path.Combine(
             Path.GetFullPath(_options.DestinationDirectory),
             candidate.Artifact.Name);
+        var gate = DownloadGates.GetOrAdd(
+            destination,
+            static _ => new SemaphoreSlim(1, 1));
+        await gate.WaitAsync(cancellationToken).ConfigureAwait(false);
+        try
+        {
+            var existing = await TryUseExistingAsync(candidate, destination, cancellationToken)
+                .ConfigureAwait(false);
+            if (existing is not null)
+                return existing;
+
+            return await DownloadCoreAsync(
+                    candidate,
+                    destination,
+                    progress,
+                    cancellationToken)
+                .ConfigureAwait(false);
+        }
+        finally
+        {
+            gate.Release();
+        }
+    }
+
+    private async ValueTask<DownloadedUpdateArtifact?> TryUseExistingAsync(
+        UpdateReleaseCandidate candidate,
+        string destination,
+        CancellationToken cancellationToken)
+    {
+        if (!File.Exists(destination))
+            return null;
+        var info = new FileInfo(destination);
+        if (candidate.Artifact.Length > 0 && info.Length != candidate.Artifact.Length)
+            return null;
+        await using var stream = new FileStream(
+            destination,
+            FileMode.Open,
+            FileAccess.Read,
+            FileShare.Read,
+            64 * 1024,
+            FileOptions.Asynchronous | FileOptions.SequentialScan);
+        var hash = Convert.ToHexString(
+                await SHA256.HashDataAsync(stream, cancellationToken).ConfigureAwait(false))
+            .ToLowerInvariant();
+        if (!string.Equals(hash, candidate.Artifact.Sha256, StringComparison.OrdinalIgnoreCase))
+            return null;
+        return new DownloadedUpdateArtifact
+        {
+            CandidateIdentity = candidate.Identity,
+            Path = destination,
+            Length = info.Length,
+            Sha256 = hash,
+        };
+    }
+
+    private async ValueTask<DownloadedUpdateArtifact> DownloadCoreAsync(
+        UpdateReleaseCandidate candidate,
+        string destination,
+        IProgress<UpdateDownloadProgress>? progress,
+        CancellationToken cancellationToken)
+    {
         var temporary = $"{destination}.{Guid.NewGuid():N}.partial";
 
         try
@@ -62,42 +126,45 @@ public sealed class FileArtifactDownloader : IArtifactDownloader
 
             await using var input = await response.Content.ReadAsStreamAsync(cancellationToken)
                 .ConfigureAwait(false);
-            await using var output = new FileStream(
+            long received = 0;
+            string digest;
+            await using (var output = new FileStream(
                 temporary,
                 FileMode.CreateNew,
                 FileAccess.Write,
                 FileShare.None,
                 64 * 1024,
-                FileOptions.Asynchronous | FileOptions.SequentialScan);
-            using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
-
-            var buffer = new byte[64 * 1024];
-            long received = 0;
-            int read;
-            while ((read = await input.ReadAsync(buffer, cancellationToken).ConfigureAwait(false)) > 0)
+                FileOptions.Asynchronous | FileOptions.SequentialScan))
+            using (var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256))
             {
-                received += read;
-                if (received > _options.MaximumBytes
-                    || (candidate.Artifact.Length > 0 && received > candidate.Artifact.Length))
+                var buffer = new byte[64 * 1024];
+                int read;
+                while ((read = await input.ReadAsync(buffer, cancellationToken).ConfigureAwait(false)) > 0)
                 {
-                    throw new UpdateSourceException(
-                        "response-too-large",
-                        "The update artifact exceeded its declared size.");
+                    received += read;
+                    if (received > _options.MaximumBytes
+                        || (candidate.Artifact.Length > 0 && received > candidate.Artifact.Length))
+                    {
+                        throw new UpdateSourceException(
+                            "response-too-large",
+                            "The update artifact exceeded its declared size.");
+                    }
+
+                    await output.WriteAsync(buffer.AsMemory(0, read), cancellationToken)
+                        .ConfigureAwait(false);
+                    hash.AppendData(buffer, 0, read);
+                    progress?.Report(UpdateDownloadProgress.Create(
+                        received,
+                        candidate.Artifact.Length > 0
+                            ? candidate.Artifact.Length
+                            : responseLength));
                 }
 
-                await output.WriteAsync(buffer.AsMemory(0, read), cancellationToken)
-                    .ConfigureAwait(false);
-                hash.AppendData(buffer, 0, read);
-                progress?.Report(UpdateDownloadProgress.Create(
-                    received,
-                    candidate.Artifact.Length > 0
-                        ? candidate.Artifact.Length
-                        : responseLength));
+                await output.FlushAsync(cancellationToken).ConfigureAwait(false);
+                output.Flush(flushToDisk: true);
+                digest = Convert.ToHexString(hash.GetHashAndReset()).ToLowerInvariant();
             }
 
-            await output.FlushAsync(cancellationToken).ConfigureAwait(false);
-            output.Flush(flushToDisk: true);
-            var digest = Convert.ToHexString(hash.GetHashAndReset()).ToLowerInvariant();
             if (candidate.Artifact.Length > 0 && received != candidate.Artifact.Length)
                 throw new UpdateSourceException(
                     "length-mismatch",
