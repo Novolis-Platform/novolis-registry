@@ -18,6 +18,14 @@ public static class UpdateManifestJson
         return JsonSerializer.Serialize(manifest, Options);
     }
 
+    /// <summary>Serializes and validates a release-level catalog.</summary>
+    public static string SerializeCatalog(UpdateManifestCatalog catalog)
+    {
+        ArgumentNullException.ThrowIfNull(catalog);
+        UpdateManifestCatalogValidator.ValidateOrThrow(catalog);
+        return JsonSerializer.Serialize(catalog, Options);
+    }
+
     /// <summary>Deserializes and validates a manifest from UTF-8 JSON.</summary>
     public static UpdateManifest Deserialize(string json)
     {
@@ -43,6 +51,31 @@ public static class UpdateManifestJson
         UpdateManifestValidator.ValidateOrThrow(manifest);
         return manifest;
     }
+
+    /// <summary>Deserializes either a catalog or a legacy single-manifest asset.</summary>
+    public static UpdateManifestCatalog DeserializeCatalog(string json)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(json);
+        using var document = JsonDocument.Parse(json);
+        if (document.RootElement.TryGetProperty("updates", out _))
+        {
+            var catalog = JsonSerializer.Deserialize<UpdateManifestCatalog>(json, Options)
+                ?? throw new JsonException("The update catalog was empty.");
+            UpdateManifestCatalogValidator.ValidateOrThrow(catalog);
+            return catalog;
+        }
+
+        var manifest = Deserialize(json);
+        return new UpdateManifestCatalog
+        {
+            GeneratedAt = manifest.PublishedAt,
+            Updates = [manifest],
+        };
+    }
+
+    /// <summary>Returns canonical UTF-8 bytes for a release-level catalog.</summary>
+    public static byte[] SerializeCatalogUtf8(UpdateManifestCatalog catalog) =>
+        Encoding.UTF8.GetBytes(SerializeCatalog(catalog));
 
     /// <summary>Returns canonical UTF-8 bytes for hashing or publishing.</summary>
     public static byte[] SerializeUtf8(UpdateManifest manifest) =>

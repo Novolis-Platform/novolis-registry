@@ -92,24 +92,27 @@ public sealed class GitHubUpdateSource : IAutoUpdateSource
                 if (manifestAsset is null)
                     continue;
 
-                var manifest = await ReadManifestAsync(manifestAsset.Value, cancellationToken)
+                var catalog = await ReadManifestCatalogAsync(manifestAsset.Value, cancellationToken)
                     .ConfigureAwait(false);
-                if (!MatchesRequest(manifest, release, request))
-                    continue;
-
-                var artifact = SelectArtifact(manifest, request);
-                if (artifact is null)
-                    continue;
-
-                var candidate = new UpdateReleaseCandidate
+                foreach (var manifest in catalog.Updates)
                 {
-                    Manifest = manifest,
-                    Artifact = artifact,
-                };
-                if (best is null
-                    || UpdateVersionComparer.Compare(candidate.Version, best.Version) > 0)
-                {
-                    best = candidate;
+                    if (!MatchesRequest(manifest, release, request))
+                        continue;
+
+                    var artifact = SelectArtifact(manifest, request);
+                    if (artifact is null)
+                        continue;
+
+                    var candidate = new UpdateReleaseCandidate
+                    {
+                        Manifest = manifest,
+                        Artifact = artifact,
+                    };
+                    if (best is null
+                        || UpdateVersionComparer.Compare(candidate.Version, best.Version) > 0)
+                    {
+                        best = candidate;
+                    }
                 }
             }
 
@@ -128,7 +131,7 @@ public sealed class GitHubUpdateSource : IAutoUpdateSource
         }
     }
 
-    private async ValueTask<UpdateManifest> ReadManifestAsync(
+    private async ValueTask<UpdateManifestCatalog> ReadManifestCatalogAsync(
         JsonElement asset,
         CancellationToken cancellationToken)
     {
@@ -152,7 +155,7 @@ public sealed class GitHubUpdateSource : IAutoUpdateSource
             .ConfigureAwait(false);
         try
         {
-            return UpdateManifestJson.Deserialize(json);
+            return UpdateManifestJson.DeserializeCatalog(json);
         }
         catch (UpdateManifestValidationException exception)
         {
