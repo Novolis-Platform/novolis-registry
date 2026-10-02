@@ -19,6 +19,7 @@ public sealed class RegistryTests
                     Name = "Example App",
                     Kind = RegistryItemKind.Application,
                     Version = "2026.1.0.1",
+                    PackageId = "Example.App",
                     Artifacts =
                     [
                         new RegistryArtifact
@@ -40,6 +41,7 @@ public sealed class RegistryTests
 
         await Assert.That(roundTrip.SchemaVersion).IsEqualTo(1);
         await Assert.That(roundTrip.Entries.Count).IsEqualTo(1);
+        await Assert.That(roundTrip.Entries[0].PackageId).IsEqualTo("Example.App");
         await Assert.That(roundTrip.Entries[0].Artifacts[0].Platform)
             .IsEqualTo(RegistryPlatform.Windows);
     }

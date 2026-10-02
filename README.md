@@ -56,13 +56,11 @@ online registry server.
 ## Dependency graph
 
 ```text
-Novolis.Registry.Primitives
-        ↑
-Novolis.Registry.Abstractions
-        ↑
-Novolis.Registry
-        ↑
-Novolis.Registry.GitHub ──> Novolis.IO.GitHub
+Novolis.Registry.GitHub
+├── depends on Novolis.Registry
+│   └── depends on Novolis.Registry.Abstractions
+│       └── depends on Novolis.Registry.Primitives
+└── depends on Novolis.IO.GitHub
 ```
 
 The future online host should be a separate
