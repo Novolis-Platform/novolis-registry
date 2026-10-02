@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Novolis.Registry.GitHub</PackageId>
+    <Description>GitHub-hosted registry source for Novolis package and application catalogs.</Description>
+    <IsPackable>true</IsPackable>
+    <RootNamespace>Novolis.Registry.GitHub</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Registry\Novolis.Registry.csproj" />
+    <LibraryReference Include="Novolis.IO.GitHub" />
+  </ItemGroup>
+</Project>

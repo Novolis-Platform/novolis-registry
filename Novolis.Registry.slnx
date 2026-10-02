@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Novolis.Registry.Primitives/Novolis.Registry.Primitives.csproj" />
+    <Project Path="src/Novolis.Registry.Abstractions/Novolis.Registry.Abstractions.csproj" />
+    <Project Path="src/Novolis.Registry/Novolis.Registry.csproj" />
+    <Project Path="src/Novolis.Registry.GitHub/Novolis.Registry.GitHub.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Novolis.Registry.Unit/Novolis.Registry.Unit.csproj" />
+  </Folder>
+</Solution>

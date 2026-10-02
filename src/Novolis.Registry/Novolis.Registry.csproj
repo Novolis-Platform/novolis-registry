@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Novolis.Registry</PackageId>
+    <Description>Registry catalog loading, lookup, and provider-neutral service behavior.</Description>
+    <IsPackable>true</IsPackable>
+    <RootNamespace>Novolis.Registry</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Registry.Abstractions\Novolis.Registry.Abstractions.csproj" />
+    <ProjectReference Include="..\Novolis.Registry.Primitives\Novolis.Registry.Primitives.csproj" />
+  </ItemGroup>
+</Project>

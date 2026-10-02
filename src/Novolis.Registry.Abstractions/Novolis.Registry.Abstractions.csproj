@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Novolis.Registry.Abstractions</PackageId>
+    <Description>Registry source and service contracts for package and application catalogs.</Description>
+    <IsPackable>true</IsPackable>
+    <RootNamespace>Novolis.Registry.Abstractions</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Registry.Primitives\Novolis.Registry.Primitives.csproj" />
+  </ItemGroup>
+</Project>

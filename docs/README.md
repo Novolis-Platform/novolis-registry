@@ -1,6 +1,6 @@
 # novolis-registry documentation
 
-Static registry of Novolis packages and apps.
+Registry contracts, catalog primitives, and provider adapters for Novolis.
 
 Published docs: [https://novolis-platform.github.io/.github/novolis-registry/](https://novolis-platform.github.io/.github/novolis-registry/)
 
@@ -8,9 +8,9 @@ Published docs: [https://novolis-platform.github.io/.github/novolis-registry/](h
 
 | Doc | What it covers |
 | --- | --- |
-| [getting-started.md](getting-started.md) | Install, restore from GitHub Packages, first use |
-| [design.md](design.md) | Goals, layer placement, non-goals |
-| [release.md](release.md) | CalVer publish and package list |
+| [getting-started.md](getting-started.md) | Restore packages and build the solution |
+| [design.md](design.md) | Package graph and future service boundary |
+| [release.md](release.md) | CalVer publishing and package list |
 
 ## More
 

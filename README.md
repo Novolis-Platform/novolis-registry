@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <strong>Static package & app catalog</strong><br/>
-  Static registry of Novolis packages and apps.
+  <strong>Registry contracts and providers</strong><br/>
+  Provider-neutral catalog primitives, services, and GitHub integration.
 </p>
 
 <p align="center">
@@ -35,64 +35,54 @@
 <!-- novolis-marketing:end -->
 # novolis-registry
 
-Static **package registry** for the Novolis ecosystem — one JSON file per published NuGet package. Tooling, org landing pages, and migration runbooks reference these entries to discover package ids, repos, and versions.
+`novolis-registry` is now the library repository for the Novolis registry
+domain. It contains provider-neutral catalog models and service contracts,
+plus a GitHub-backed source implementation.
 
-This repo does **not** host binaries. Packages install from **nuget.org** and **GitHub Packages** (`Novolis.*` at `2026.1.*`).
+The static organization catalog is maintained in
+[`novolis-governance/registry`](https://github.com/Novolis-Platform/novolis-governance/tree/main/registry).
+This repository does not host application binaries or act as the future
+online registry server.
 
-## Layout
+## Packages
+
+| Package | Responsibility |
+|---------|----------------|
+| `Novolis.Registry.Primitives` | Catalog documents, entries, channels, platforms, and artifacts |
+| `Novolis.Registry.Abstractions` | Source and service contracts |
+| `Novolis.Registry` | JSON handling and provider-neutral `RegistryService` |
+| `Novolis.Registry.GitHub` | GitHub raw-content source using `Novolis.IO.GitHub` |
+
+## Dependency graph
 
 ```text
-novolis-registry/
-  packages/           # one *.json per package (kebab-case file name)
-  schemas/
-    package.schema.json
-  logo-icon.svg
+Novolis.Registry.Primitives
+        ↑
+Novolis.Registry.Abstractions
+        ↑
+Novolis.Registry
+        ↑
+Novolis.Registry.GitHub ──> Novolis.IO.GitHub
 ```
 
-Each file under `packages/` describes a single NuGet package, for example `packages/novolis.simulation.json`:
+The future online host should be a separate
+`Novolis.Registry.Hosting.AspNetCore` surface or executable. It can expose
+`RegistryService` without forcing ASP.NET Core into the core packages.
 
-```json
-{
-  "id": "novolis.simulation",
-  "name": "Novolis.Simulation",
-  "type": "nuget",
-  "version": "2026.1.1.0",
-  "repository": "https://github.com/Novolis-Platform/novolis-simulation",
-  "packageId": "Novolis.Simulation"
-}
+## Build
+
+```powershell
+dotnet build d:\novolis\novolis-registry\Novolis.Registry.slnx
+dotnet test d:\novolis\novolis-registry\Novolis.Registry.slnx
 ```
 
-| Field | Meaning |
-|-------|---------|
-| `id` | Registry slug (lowercase, dot-separated) |
-| `name` | Display / assembly name |
-| `type` | `"nuget"` for platform libraries |
-| `version` | Last known published version (update on release) |
-| `repository` | Source repo URL |
-| `packageId` | NuGet `PackageId` for `dotnet add package` |
+Packages publish through the normal Novolis GitHub Packages workflow. Cross
+repository dependencies use `LibraryReference`/NuGet resolution; committed
+sibling `ProjectReference` paths are not used.
 
-Optional schema fields (`sha256`, `downloadUrl`) apply when pointing at downloadable artifacts; most Novolis packages resolve via NuGet feeds instead.
+## Related
 
-## Adding or updating an entry
-
-1. Publish the package from its repo (merge to `main` → CI → GitHub Packages / nuget.org).
-2. Create or edit `packages/<package-id-kebab>.json` — kebab-case mirrors the NuGet id (`Novolis.Economy.Core` → `novolis.economy.core.json`).
-3. Set `version` to the released `2026.1.*` build and `repository` to the GitHub repo.
-4. Open a PR in `novolis-registry`; validate against `schemas/package.schema.json`.
-
-Template and migration steps: [frank-migration-runbook.md](https://github.com/Novolis-Platform/novolis-governance/blob/main/docs/frank-migration-runbook.md) (Registry entry section).
-
-## Consumers
-
-| Consumer | Use |
-|----------|-----|
-| Org landing / status scripts | Package inventory matrices |
-| Governance import plans | Track migration from Frank.* repos |
-| Maintainers | Single index of what exists and where it lives |
-
-There is no separate apps index in this repo today — application dogfood lives in [`novolis-dogfooding`](https://github.com/Novolis-Platform/novolis-dogfooding).
-
-## Policy
-
-Do not add local NuGet folder feeds here. Registry entries point at org feeds only (nuget.org + GitHub Packages).
+- [Static registry data](https://github.com/Novolis-Platform/novolis-governance/tree/main/registry)
+- [Novolis.IO.GitHub](https://github.com/Novolis-Platform/novolis-io)
+- [Novolis.Install](https://github.com/Novolis-Platform/novolis-tools/tree/main/src/Novolis.Install)
 

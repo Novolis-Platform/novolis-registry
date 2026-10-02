@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Novolis.Registry.Primitives</PackageId>
+    <Description>Provider-neutral registry documents, entries, channels, and artifact vocabulary.</Description>
+    <IsPackable>true</IsPackable>
+    <RootNamespace>Novolis.Registry.Primitives</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Novolis.Registry.Unit</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="TUnit" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Novolis.Registry.Primitives/Novolis.Registry.Primitives.csproj" />
+    <ProjectReference Include="../../src/Novolis.Registry.Abstractions/Novolis.Registry.Abstractions.csproj" />
+    <ProjectReference Include="../../src/Novolis.Registry/Novolis.Registry.csproj" />
+    <ProjectReference Include="../../src/Novolis.Registry.GitHub/Novolis.Registry.GitHub.csproj" />
+  </ItemGroup>
+</Project>

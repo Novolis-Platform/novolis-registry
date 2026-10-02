@@ -6,8 +6,12 @@ See [release-policy](https://github.com/Novolis-Platform/novolis-governance/blob
 
 ## Packages
 
-- (no packable ``Novolis.*`` projects detected — see repository README)
+- `Novolis.Registry.Primitives`
+- `Novolis.Registry.Abstractions`
+- `Novolis.Registry`
+- `Novolis.Registry.GitHub`
 
 ## Consumers
 
-Restore from nuget.org + `https://nuget.pkg.github.com/Novolis-Platform/index.json` only.
+Restore from nuget.org + `https://nuget.pkg.github.com/Novolis-Platform/index.json`
+only. The package repository does not publish application binaries.
