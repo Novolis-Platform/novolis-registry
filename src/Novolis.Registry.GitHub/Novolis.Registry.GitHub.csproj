@@ -8,6 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Novolis.Registry\Novolis.Registry.csproj" />
+    <ProjectReference Include="..\Novolis.Registry.Updates\Novolis.Registry.Updates.csproj" />
     <LibraryReference Include="Novolis.IO.GitHub" />
   </ItemGroup>
 </Project>
