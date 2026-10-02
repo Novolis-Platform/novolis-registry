@@ -13,5 +13,6 @@
     <ProjectReference Include="../../src/Novolis.Registry.Abstractions/Novolis.Registry.Abstractions.csproj" />
     <ProjectReference Include="../../src/Novolis.Registry/Novolis.Registry.csproj" />
     <ProjectReference Include="../../src/Novolis.Registry.GitHub/Novolis.Registry.GitHub.csproj" />
+    <ProjectReference Include="../../src/Novolis.Registry.Updates/Novolis.Registry.Updates.csproj" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Novolis.Registry.Updates</PackageId>
+    <Description>Provider-neutral update contracts, coordination, and verified artifact handling.</Description>
+    <IsPackable>true</IsPackable>
+    <RootNamespace>Novolis.Registry.Updates</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Registry.Primitives\Novolis.Registry.Primitives.csproj" />
+    <ProjectReference Include="..\Novolis.Registry.Abstractions\Novolis.Registry.Abstractions.csproj" />
+  </ItemGroup>
+</Project>
