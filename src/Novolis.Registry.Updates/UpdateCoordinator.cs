@@ -290,7 +290,7 @@ public sealed class UpdateCoordinator : IAsyncDisposable
                         _persisted.Checkpoint,
                         cancellationToken)
                     .ConfigureAwait(false);
-                var retry = result.RetryAfter is { } providerRetry
+                DateTimeOffset? retry = result.RetryAfter is { } providerRetry
                     ? now + Min(providerRetry - now, _options.MaximumRetryDelay)
                     : null;
                 var checkpoint = _persisted.Checkpoint with
@@ -361,6 +361,13 @@ public sealed class UpdateCoordinator : IAsyncDisposable
             }
             catch (UpdateSourceException exception)
             {
+                if (exception.RetryAfter is { } providerRetryAfter)
+                {
+                    _persisted = _persisted with
+                    {
+                        Checkpoint = _persisted.Checkpoint with { RetryAfter = providerRetryAfter },
+                    };
+                }
                 return await FailAndPersistAsync(
                         exception.Code,
                         exception.Message,

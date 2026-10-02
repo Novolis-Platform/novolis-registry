@@ -1,3 +1,5 @@
+using Novolis.Registry.Primitives;
+
 namespace Novolis.Registry.Primitives.Updates;
 
 /// <summary>Installed-app identity and target used to select one release artifact.</summary>

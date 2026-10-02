@@ -352,6 +352,11 @@ public sealed class GitHubUpdateSource : IAutoUpdateSource
     private static bool RepositoryMatches(Uri request, GitHubRepository configured)
     {
         var expected = new Uri($"https://github.com/{configured.Owner}/{configured.Name}");
+        return RepositoryMatches(request, expected);
+    }
+
+    private static bool RepositoryMatches(Uri request, Uri expected)
+    {
         return Uri.Compare(
                    request,
                    expected,
