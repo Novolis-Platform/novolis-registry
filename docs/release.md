@@ -9,6 +9,7 @@ See [release-policy](https://github.com/Novolis-Platform/novolis-governance/blob
 - `Novolis.Registry.Primitives`
 - `Novolis.Registry.Abstractions`
 - `Novolis.Registry`
+- `Novolis.Registry.Updates`
 - `Novolis.Registry.GitHub`
 
 ## Consumers

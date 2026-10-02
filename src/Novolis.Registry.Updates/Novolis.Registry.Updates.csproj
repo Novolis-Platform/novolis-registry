@@ -10,4 +10,6 @@
     <ProjectReference Include="..\Novolis.Registry.Primitives\Novolis.Registry.Primitives.csproj" />
     <ProjectReference Include="..\Novolis.Registry.Abstractions\Novolis.Registry.Abstractions.csproj" />
   </ItemGroup>
+  <Import Project="$(MSBuildProjectDirectory)\..\..\..\novolis-governance\build\Novolis.PackageReadme.props"
+          Condition="Exists('$(MSBuildProjectDirectory)\..\..\..\novolis-governance\build\Novolis.PackageReadme.props')" />
 </Project>

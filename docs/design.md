@@ -18,6 +18,7 @@ serve the same document without changing the client contracts.
 ```text
 Novolis.Registry.GitHub
 ├── depends on Novolis.Registry
+    ├── depends on Novolis.Registry.Updates
 │   └── depends on Novolis.Registry.Abstractions
 │       └── depends on Novolis.Registry.Primitives
 └── depends on Novolis.IO.GitHub

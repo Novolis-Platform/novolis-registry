@@ -51,6 +51,7 @@ online registry server.
 | `Novolis.Registry.Primitives` | Catalog documents, entries, channels, platforms, and artifacts |
 | `Novolis.Registry.Abstractions` | Source and service contracts |
 | `Novolis.Registry` | JSON handling and provider-neutral `RegistryService` |
+| `Novolis.Registry.Updates` | Direct-release update coordination and verification |
 | `Novolis.Registry.GitHub` | GitHub raw-content source using `Novolis.IO.GitHub` |
 
 ## Dependency graph
@@ -58,6 +59,7 @@ online registry server.
 ```text
 Novolis.Registry.GitHub
 ├── depends on Novolis.Registry
+├── depends on Novolis.Registry.Updates
 │   └── depends on Novolis.Registry.Abstractions
 │       └── depends on Novolis.Registry.Primitives
 └── depends on Novolis.IO.GitHub

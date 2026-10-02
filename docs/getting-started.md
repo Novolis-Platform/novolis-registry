@@ -32,6 +32,7 @@ Local multi-repo iteration uses ProjectReference mode via
 Novolis.Registry.Primitives
 Novolis.Registry.Abstractions
 Novolis.Registry
+Novolis.Registry.Updates
 Novolis.Registry.GitHub
 ```
 
