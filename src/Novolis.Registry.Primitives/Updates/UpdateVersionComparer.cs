@@ -130,7 +130,3 @@ public static class UpdateVersionComparer
     }
 }
 
-/// <summary>Parsed components of a supported update version.</summary>
-public sealed record ParsedUpdateVersion(
-    IReadOnlyList<int> Numbers,
-    string? PreRelease);
